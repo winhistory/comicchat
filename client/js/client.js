@@ -16,7 +16,7 @@
   });
 
   if (typeof (window.WebSocket || window.MozWebSocket) === 'undefined') {
-    document.getElementByTag('body').innerHTML = 'Websocket support required.';
+    document.getElementByTag('body').innerHTML = 'Unterstützung für WebSockets fehlt!';
     return;
   }
 

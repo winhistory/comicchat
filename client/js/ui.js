@@ -43,21 +43,21 @@ UI.prototype = {
   connected: function () {
     this.roomSwitcher.placeholder = window.location.hash;
     this.roomSwitcher.value = window.location.hash;
-    this.input.placeholder = 'Your nickname...';
+    this.input.placeholder = 'Dein Spitzname';
     this.input.disabled = false;
     this.roomSwitcher.disabled = false;
-    this.setStatus('Connected.');
+    this.setStatus('Verbunden.');
   },
 
   disconnected: function () {
     this.input.disabled = true;
-    this.input.placeholder = 'No connection';
+    this.input.placeholder = 'Keine Verbindung';
     this.roomSwitcher.disabled = true;
-    this.setStatus('Disconnected.');
+    this.setStatus('Getrennt.');
   },
 
   reconnecting: function () {
-    this.setStatus('Reconnecting...');
+    this.setStatus('Verbindung wird wiederhergestellt...');
   },
 
   setupNotifications: function () {
@@ -77,7 +77,7 @@ UI.prototype = {
         this.notification.permission === 'granted' &&
         this.notifyEnabled.checked === true) {
       new Notification('comicchat ' + data.room, {
-        lang: 'en-US',
+        lang: 'de-DE',
         icon: './res/icon.gif',
         body: data.author + ": " + data.text
       });
