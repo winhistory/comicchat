@@ -218,3 +218,6 @@ pip-log.txt
 
 # server keys
 server/keys/
+
+# don't sue me, Microsoft
+client/css/fonts/

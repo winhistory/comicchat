@@ -1,0 +1,10 @@
+@font-face {
+	font-family: "Comic Sans MS";
+	font-weight: normal;
+	src: local("Comic Sans MS"), local(ComicSansMS), url(fonts/comic.ttf) format(truetype);
+}
+@font-face {
+	font-family: "Comic Sans MS";
+	font-weight: bold;
+	src: local("Comic Sans MS Bold"), local(ComicSansMS-Bold), url(fonts/comicbd.ttf) format(truetype);
+}
