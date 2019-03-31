@@ -2,6 +2,8 @@
 
 process.title = 'comicchat-server';
 
+const fs = require('fs');
+const path = require('path');
 var args = require('minimist')(process.argv.slice(2));
 
 // Basic global logger -- replace with library
@@ -9,10 +11,10 @@ function log (text) {
   console.log((new Date()) + ' ' + text);
 }
 
-var http = require('http');
+var https = require('https');
 var websocketServer = require('websocket').server;
 
-var wsServerPort = args.port || 8084;
+var wsServerPort = args.port || 9443;
 var historySize = args.historySize || 500;
 var clients = [];
 var rooms = {};
@@ -23,13 +25,18 @@ console.log("Config:", {
 });
 
 // Dummy HTML server for websocket server to hook into
-var httpServer = http.createServer(function () {});
-httpServer.listen(wsServerPort, function () {
+const httpsOptions = {
+  cert: fs.readFileSync(path.resolve(__dirname, 'keys/server.crt')),
+  key: fs.readFileSync(path.resolve(__dirname, 'keys/server.key')),
+  handshakeTimeout: 15000
+};
+var httpsServer = https.createServer(httpsOptions);
+httpsServer.listen(wsServerPort, function () {
   log('Server listening on port ' + wsServerPort);
 });
 
 var wsServer = new websocketServer({
-  httpServer: httpServer
+  httpServer: httpsServer
 });
 
 function initRoom (name) {
