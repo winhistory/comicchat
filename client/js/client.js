@@ -44,6 +44,16 @@
         type: 'history',
         room: window.location.hash
       }));
+
+      if (window.location.search.startsWith("?user=")) {
+        var autouser = decodeURIComponent(window.location.search.slice(6));
+        ws.send(JSON.stringify({
+          type: 'message',
+          text: autouser,
+          room: window.location.hash
+        }));
+        ui.input.placeholder = 'Chat...';
+      }
     };
 
     ws.onerror = function (e) {
