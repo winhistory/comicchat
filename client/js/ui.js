@@ -22,8 +22,6 @@ function UI (elements) {
   this.synth = window.speechSynthesis;
   if (typeof this.synth === 'undefined') {
     this.ttsEnabled.disabled = true;
-  } else {
-    this.synth.speak(new SpeechSynthesisUtterance('')); // Initialize voices
   }
 
   this.setupShortcuts();
