@@ -8,7 +8,7 @@ var args = require('minimist')(process.argv.slice(2));
 
 // Basic global logger -- replace with library
 function log (text) {
-  console.log((new Date()) + ' ' + text);
+  console.log(text);
 }
 
 var https = require('https');
